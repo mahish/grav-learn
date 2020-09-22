@@ -40,7 +40,7 @@ In addition to the fields listed below, reserved for usage in the Admin, you can
 | **MediaPicker**                                   |                                                                                                                                                                                                             |
 | **Multilevel**                                    |                                                                                                                                                                                                             |
 | **Order**                                         |                                                                                                                                                                                                             |
-| **PageMedia**                                     |                                                                                                                                                                                                             |
+| **[PageMedia](#pagemedia-field)**                 | Responsible for uploading media files in Page blueprints.                                                                                                                                                                                                            |
 | **[PageMediaSelect](#pagemediaselect-field)**     | shows a select with all the page media. Used in Pages blueprints to let the user choose a media file to be assigned to a field.                                                                             |
 | **[Pages](#pages-field)**                         | shows a list of the site pages                                                                                                                                                                              |
 | **Parents**                                       |                                                                                                                                                                                                             |
@@ -778,6 +778,51 @@ Accessing and displaying the data of a `list` field is done with a simple twig f
 | [validate.required](#common-fields-attributes) |
 | [validate.type](#common-fields-attributes)     |
 | [size](#common-fields-attributes)              |
+[/div]
+
+
+### PageMedia Field
+The `pagemedia` field type is used to allow the users to upload a media to the page media and sort them. 
+
+!! The field must be named as `header.media_order` at the moment.
+
+Example
+
+[prism classes="language-yaml line-numbers"]
+header.media_order:
+  label: Upload media
+  type: pagemedia
+  destination: '@self'
+  multiple: true
+  limit: 5
+  filesize: 1
+  accept:
+    - image/*
+[/prism]
+
+[div class="table table-keycol"]
+| Attribute           | Description                                                                                                |
+| :-----              | :-----                                                                                                     |
+| `destination`       | The folder where the files will be stored, relative to the Grav root. E.g. `user/plugins/my-plugin/assets` |
+| `multiple`          | Whether or not to allow more than one file per field                                                       |
+| `limit`             | When `multiple` is enabled, allows to constrain the amount of files permitted to be uploaded               |
+| `filesize`          | The size in MB each file is allowed                                                                        |
+| `accept`            | Add a list of accepted page mime types and extensions. E.g. `["image/*", '.mp3']`                          |
+[/div]
+
+[div class="table table-keycol"]
+| Common Attributes Allowed                      |
+| :-----                                         |
+| [default](#common-fields-attributes)           |
+| [disabled](#common-fields-attributes)          |
+| [help](#common-fields-attributes)              |
+| [label](#common-fields-attributes)             |
+| [name](#common-fields-attributes)              |
+| [size](#common-fields-attributes)              |
+| [style](#common-fields-attributes)             |
+| [toggleable](#common-fields-attributes)        |
+| [validate.required](#common-fields-attributes) |
+| [validate.type](#common-fields-attributes)     |
 [/div]
 
 
